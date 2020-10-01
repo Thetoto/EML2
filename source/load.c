@@ -1,5 +1,9 @@
-#include <err.h>
 #include "rendering.h"
+#include <stdio.h>
+static void warnx(char *str)
+{
+    printf("WARNING : %s\n", str);
+}
 
 static void load_menus(struct game *game)
 {

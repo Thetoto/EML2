@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include "menu.h"
 #include <SDL2/SDL_mixer.h>
+#include "inputs.h"
 
 static void render_VICTORY(struct game *game)
 {
@@ -154,10 +155,11 @@ void render_story(struct game *game)
         SDL_RenderCopy(game->renderer, game->texture_lib[R], NULL,
             &dstrect);
 
-        if (x > 300 && x < 500 && y > 580 && y < 630)
+        struct inputs in = get_inputs();
+        if (in.jump || (x > 300 && x < 500 && y > 580 && y < 630))
         {
             render_CONTINUESSTORY(game);
-            if (mouse_state & SDL_BUTTON_LMASK)
+            if (in.jump || (mouse_state & SDL_BUTTON_LMASK))
                 return;
         }
         else
@@ -171,7 +173,7 @@ void render_story(struct game *game)
 void render_defeat(struct game *game)
 {
     Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640);
-    game->music = Mix_LoadMUS("ressources/mp3/death2.mp3");
+    game->music = Mix_LoadMUS("romfs:/ressources/mp3/death2.mp3");
     Mix_PlayMusic(game->music, 1);
 
     int x;
@@ -184,12 +186,13 @@ void render_defeat(struct game *game)
     while (1)
     {
         SDL_PumpEvents();
+        struct inputs in = get_inputs();
         mouse_state = SDL_GetMouseState(&x, &y);
         render_DEFEAT(game);
-        if (x > 300 && x < 500 && y > 440 && y < 490)
+        if (in.jump || (x > 300 && x < 500 && y > 440 && y < 490))
         {
             render_CONTINUES(game);
-            if (mouse_state & SDL_BUTTON_LMASK)
+            if (in.jump || (mouse_state & SDL_BUTTON_LMASK))
                 return;
         }
         else
@@ -202,7 +205,7 @@ void render_defeat(struct game *game)
 void render_victory(struct game *game)
 {
     Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 640);
-    game->music = Mix_LoadMUS("ressources/mp3/victory.mp3");
+    game->music = Mix_LoadMUS("romfs:/ressources/mp3/victory.mp3");
     Mix_PlayMusic(game->music, 1);
     SDL_PumpEvents();
     int x;
@@ -214,10 +217,11 @@ void render_victory(struct game *game)
         mouse_state = SDL_GetMouseState(&x, &y);
         render_BG(game);
         render_VICTORY(game);
-        if (x > 300 && x < 500 && y > 440 && y < 490)
+        struct inputs in = get_inputs();
+        if (in.jump || (x > 300 && x < 500 && y > 440 && y < 490))
         {
             render_CONTINUES(game);
-            if (mouse_state & SDL_BUTTON_LMASK)
+            if (in.jump || (mouse_state & SDL_BUTTON_LMASK))
                 return;
         }
         else

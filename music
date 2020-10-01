@@ -1,0 +1,292 @@
+source/main.c:        map_parse(str, game->map, 1);
+source/main.c:        map_parse(str, game->map, 0);
+source/main.c:    game->map->delims = NULL;
+source/main.c:    compute_delims(game->map);
+source/main.c:    game->is_playing = 1;
+source/main.c:    game->lvl = 0;
+source/main.c:    game->map = malloc(sizeof(struct map));
+source/main.c:    init_map(game, game->lvl);
+source/main.c:    game->timer = 0;
+source/main.c:    game->timer_lava = 0;
+source/main.c:    free(game->map->delims);
+source/main.c:    map_delete(game->map);
+source/main.c:    free(game->map);
+source/main.c:    while (game->is_playing)
+source/main.c:            float save_y = game->map->players[0]->position.y;
+source/main.c:            init_map(game, game->lvl);
+source/main.c:            game->map->players[0]->position.y = save_y - 1;
+source/main.c:                game->map->players[0]->position.x = 48;
+source/main.c:                game->map->players[0]->position.x = 2;
+source/main.c:        if (in.cheat && game->map->players[0]->is_attacking)
+source/main.c:            init_map(game, ++game->lvl);
+source/main.c:            game->map->players[0]->orientation = 0;
+source/main.c:            game->map->players[0]->is_ground = 0;
+source/main.c:            game->map->players[0]->has_jumped = 0;
+source/main.c:            game->map->players[0]->is_attacking = 0;
+source/main.c:            game->music = Mix_LoadMUS("ressources/mp3/death.mp3");
+source/main.c:            Mix_PlayMusic(game->music, 1);
+source/main.c:            struct vec2 pos = game->map->players[0]->position;
+source/main.c:            game->map->players[0]->position = pos;
+source/main.c:            game->map->players[0]->velocity = velo;
+source/main.c:            game->map->players[0]->orientation = 0;
+source/main.c:            game->map->players[0]->is_ground = 0;
+source/main.c:            game->map->players[0]->has_jumped = 0;
+source/main.c:            move_jump(game->map->players[0]);
+source/main.c:    game->music = Mix_LoadMUS("ressources/mp3/intro.mp3");
+source/main.c:    Mix_PlayMusic(game->music, -1);
+source/main.c:            game->music = Mix_LoadMUS("ressources/mp3/intro.mp3");
+source/main.c:            Mix_PlayMusic(game->music, -1);
+source/inputs.c:    for (size_t i = 1; i < game->map->n_players; i++)
+source/inputs.c:        struct character *pnj = game->map->players[i];
+source/inputs.c:        move_left(game->map->players[0]);
+source/inputs.c:        move_right(game->map->players[0]);
+source/inputs.c:        move_jump(game->map->players[0]);
+source/inputs.c:    if (in.attack && game->map->players[0]->is_attacking == 0)
+source/inputs.c:        game->map->players[0]->is_attacking = 1;
+source/inputs.c:        game->is_playing = 0;
+source/inputs.c:    apply_gravity(game->map);
+source/inputs.c:    int res = move_all(game->map);
+source/inputs.c:        struct character *player = game->map->players[i];
+source/inputs.c:    if (game->map->players[0]->position.x < 0)
+source/inputs.c:        game->lvl--;
+source/inputs.c:        game->lvl = (game->lvl + 6) % 6;
+source/inputs.c:    if (game->map->players[0]->position.x > 49)
+source/inputs.c:        game->lvl++;
+source/inputs.c:        game->lvl = (game->lvl + 6) % 6;
+source/load.c:    SDL_Texture *bg_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *door_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *doorS_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *credits_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *creditsS_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *eml_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *history_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *historyS_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *quickgame_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *quickgameS_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *back_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *continue_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *continueS_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *victory_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *gameover_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *resume_text = IMG_LoadTexture(game->renderer,
+source/load.c:    game->texture_lib[BACK] = back_text;
+source/load.c:    game->texture_lib[DOOR] = door_text;
+source/load.c:    game->texture_lib[DOORS] = doorS_text;
+source/load.c:    game->texture_lib[BG] = bg_text;
+source/load.c:    game->texture_lib[CREDITS] = credits_text;
+source/load.c:    game->texture_lib[CREDITSS] = creditsS_text;
+source/load.c:    game->texture_lib[EML] = eml_text;
+source/load.c:    game->texture_lib[HISTORY] = history_text;
+source/load.c:    game->texture_lib[HISTORYS] = historyS_text;
+source/load.c:    game->texture_lib[QUICKGAME] = quickgame_text;
+source/load.c:    game->texture_lib[QUICKGAMES] = quickgameS_text;
+source/load.c:    game->texture_lib[CONTINUE] = continue_text;
+source/load.c:    game->texture_lib[CONTINUES] = continueS_text;
+source/load.c:    game->texture_lib[VICTORY] = victory_text;
+source/load.c:    game->texture_lib[GAMEOVER] = gameover_text;
+source/load.c:    game->texture_lib[R] = resume_text;
+source/load.c:    SDL_Texture *louis_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *louist_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *toto_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *totot_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *g_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *gt_text = IMG_LoadTexture(game->renderer,
+source/load.c:    game->texture_lib[LOUIS] = louis_text;
+source/load.c:    game->texture_lib[LOUIST] = louist_text;
+source/load.c:    game->texture_lib[TOTO] = toto_text;
+source/load.c:    game->texture_lib[TOTOT] = totot_text;
+source/load.c:    game->texture_lib[G] = g_text;
+source/load.c:    game->texture_lib[GT] = gt_text;
+source/load.c:    SDL_Texture *grass_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *void_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *lava1_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *lava2_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *lava3_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *princess_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *brick_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *dirt_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *stone_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *wood_text = IMG_LoadTexture(game->renderer,
+source/load.c:    game->texture_lib[VOID] = void_text;
+source/load.c:    game->texture_lib[GRASS] = grass_text;
+source/load.c:    game->texture_lib[LAVA1] = lava1_text;
+source/load.c:    game->texture_lib[LAVA2] = lava2_text;
+source/load.c:    game->texture_lib[LAVA3] = lava3_text;
+source/load.c:    game->texture_lib[PRINCESS] = princess_text;
+source/load.c:    game->texture_lib[BRICK] = brick_text;
+source/load.c:    game->texture_lib[DIRT] = dirt_text;
+source/load.c:    game->texture_lib[STONE] = stone_text;
+source/load.c:    game->texture_lib[WOOD] = wood_text;
+source/load.c:    SDL_Texture *er0_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *er1_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *el0_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *el1_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *ef_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *efj_text = IMG_LoadTexture(game->renderer,
+source/load.c:    game->texture_lib[ER0] = er0_text;
+source/load.c:    game->texture_lib[ER1] = er1_text;
+source/load.c:    game->texture_lib[EL0] = el0_text;
+source/load.c:    game->texture_lib[EL1] = el1_text;
+source/load.c:    game->texture_lib[EF] = ef_text;
+source/load.c:    game->texture_lib[EFJ] = efj_text;
+source/load.c:    SDL_Texture *prj_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *plj_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *pfj_text = IMG_LoadTexture(game->renderer,
+source/load.c:    game->texture_lib[PRJ] = prj_text;
+source/load.c:    game->texture_lib[PLJ] = plj_text;
+source/load.c:    game->texture_lib[PFJ] = pfj_text;
+source/load.c:    SDL_Texture *ar0_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *ar1_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *al0_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *al1_text = IMG_LoadTexture(game->renderer,
+source/load.c:    game->texture_lib[AR0] = ar0_text;
+source/load.c:    game->texture_lib[AR1] = ar1_text;
+source/load.c:    game->texture_lib[AL0] = al0_text;
+source/load.c:    game->texture_lib[AL1] = al1_text;
+source/load.c:    SDL_Texture *pr0_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *pr1_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *pr2_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *pl0_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *pl1_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *pl2_text = IMG_LoadTexture(game->renderer,
+source/load.c:    SDL_Texture *pf_text = IMG_LoadTexture(game->renderer,
+source/load.c:    game->texture_lib[PL0] = pl0_text;
+source/load.c:    game->texture_lib[PL1] = pl1_text;
+source/load.c:    game->texture_lib[PL2] = pl2_text;
+source/load.c:    game->texture_lib[PR0] = pr0_text;
+source/load.c:    game->texture_lib[PR1] = pr1_text;
+source/load.c:    game->texture_lib[PR2] = pr2_text;
+source/load.c:    game->texture_lib[PF] = pf_text;
+source/rendering.c:    game->renderer = renderer;
+source/rendering.c:    game->window = win;
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[VOID]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[GRASS]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[LAVA1]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[LAVA2]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[LAVA3]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[BRICK]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[DIRT]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[STONE]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[WOOD]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[PR0]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[PR1]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[PR2]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[PL0]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[PL1]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[PL2]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[PF]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[PFJ]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[PRJ]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[PLJ]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[AR0]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[AR1]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[AL0]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[AL1]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[EL1]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[EL0]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[ER1]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[ER0]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[EF]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[EFJ]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[DOOR]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[DOORS]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[BG]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[CREDITS]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[CREDITSS]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[EML]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[HISTORY]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[HISTORYS]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[QUICKGAME]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[QUICKGAMES]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[CONTINUE]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[CONTINUES]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[VICTORY]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[GAMEOVER]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[BACK]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[LOUIS]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[LOUIST]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[TOTO]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[TOTOT]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[G]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[GT]);
+source/rendering.c:    SDL_DestroyTexture(game->texture_lib[R]);
+source/rendering.c:    SDL_DestroyRenderer(game->renderer);
+source/rendering.c:    SDL_DestroyWindow(game->window);
+source/rendering.c:    Mix_FreeMusic(game->music);
+source/rendering.c:    int res = game->timer;
+source/rendering.c:    game->timer += 1;
+source/rendering.c:    if (game->timer > TIMER_MAX)
+source/rendering.c:        game->timer = 0;
+source/rendering.c:        return game->texture_lib[AL0];
+source/rendering.c:            return game->texture_lib[AL0];
+source/rendering.c:        return game->texture_lib[AL1];
+source/rendering.c:        return game->texture_lib[AR0];
+source/rendering.c:    return game->texture_lib[AR1];
+source/rendering.c:        return game->texture_lib[PF];// a modif
+source/rendering.c:            return game->texture_lib[PLJ];
+source/rendering.c:            return game->texture_lib[PL0];
+source/rendering.c:        return game->texture_lib[PL2];
+source/rendering.c:        return game->texture_lib[PRJ];
+source/rendering.c:        return game->texture_lib[PR0];
+source/rendering.c:    return game->texture_lib[PR2];
+source/rendering.c:        return game->texture_lib[EF];// a modif
+source/rendering.c:        return game->texture_lib[EFJ];
+source/rendering.c:            return game->texture_lib[EL0];
+source/rendering.c:        return game->texture_lib[EL1];
+source/rendering.c:        return game->texture_lib[ER0];
+source/rendering.c:    return game->texture_lib[ER1];
+source/rendering.c:    for (size_t i = 0; i < game->map->n_players; i++)
+source/rendering.c:        dstrect.x = game->map->players[i]->position.x * BLOCK_SIZE;
+source/rendering.c:        dstrect.y = game->map->players[i]->position.y * BLOCK_SIZE;
+source/rendering.c:        struct character *player = game->map->players[i];
+source/rendering.c:        SDL_RenderCopy(game->renderer, text, NULL, &dstrect);
+source/rendering.c:    game->timer_lava += 1;
+source/rendering.c:    if (!(game->timer_lava < TIMER_MAX_LAVA))
+source/rendering.c:        game->timer_lava = 0;
+source/rendering.c:        if (game->timer_lava < TIMER_MAX_LAVA3)
+source/rendering.c:            return game->texture_lib[LAVA1];
+source/rendering.c:        else if (game->timer_lava < TIMER_MAX_LAVA3 * 2)
+source/rendering.c:            return game->texture_lib[LAVA2];
+source/rendering.c:        return game->texture_lib[LAVA3];
+source/rendering.c:    return game->texture_lib[block];
+source/rendering.c:    SDL_RenderCopy(game->renderer, game->texture_lib[BACK], NULL, NULL);
+source/rendering.c:            if (game->map->grid[j][i] == PRINCESS)
+source/rendering.c:            SDL_RenderCopy(game->renderer, select_block_texture(game,
+source/rendering.c:                        game->map->grid[j][i]), NULL, &dstrect);
+source/rendering.c:    SDL_RenderPresent(game->renderer);
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[VICTORY], NULL, &dstrect);
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[GAMEOVER], NULL, &dstrect);
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[CONTINUE], NULL, &dstrect);
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[LOUIS], NULL, &dstrect);
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[LOUIST], NULL, &dstrect);
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[TOTO], NULL, &dstrect);
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[TOTOT], NULL, &dstrect);
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[G], NULL, &dstrect);
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[GT], NULL, &dstrect);
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[CONTINUES], NULL,
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[CONTINUE], NULL,
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[CONTINUES], NULL,
+source/victory.c:    SDL_RenderCopy(game->renderer, game->texture_lib[R], NULL,
+source/victory.c:        SDL_RenderCopy(game->renderer, game->texture_lib[R], NULL,
+source/victory.c:        SDL_RenderPresent(game->renderer);
+source/victory.c:    game->music = Mix_LoadMUS("ressources/mp3/death2.mp3");
+source/victory.c:    Mix_PlayMusic(game->music, 1);
+source/victory.c:    SDL_RenderPresent(game->renderer);
+source/victory.c:        SDL_RenderPresent(game->renderer);
+source/victory.c:    game->music = Mix_LoadMUS("ressources/mp3/victory.mp3");
+source/victory.c:    Mix_PlayMusic(game->music, 1);
+source/victory.c:        SDL_RenderPresent(game->renderer);
+source/victory.c:    SDL_RenderPresent(game->renderer);
+source/victory.c:    SDL_RenderPresent(game->renderer);
+source/victory.c:    SDL_RenderPresent(game->renderer);
+source/menu.c:    SDL_RenderCopy(game->renderer, game->texture_lib[EML], NULL, &dstrect);
+source/menu.c:    SDL_RenderCopy(game->renderer, game->texture_lib[QUICKGAME],
+source/menu.c:    SDL_RenderCopy(game->renderer, game->texture_lib[QUICKGAMES],
+source/menu.c:    SDL_RenderCopy(game->renderer, game->texture_lib[HISTORY],
+source/menu.c:    SDL_RenderCopy(game->renderer, game->texture_lib[HISTORYS],
+source/menu.c:    SDL_RenderCopy(game->renderer, game->texture_lib[CREDITS],
+source/menu.c:    SDL_RenderCopy(game->renderer, game->texture_lib[CREDITSS],
+source/menu.c:    SDL_RenderCopy(game->renderer, game->texture_lib[BG], NULL, &dstrect);
+source/menu.c:    SDL_RenderCopy(game->renderer, game->texture_lib[DOOR], NULL, &dstrect);
+source/menu.c:    SDL_RenderCopy(game->renderer, game->texture_lib[DOORS], NULL, &dstrect);
+source/menu.c:    SDL_RenderPresent(game->renderer);

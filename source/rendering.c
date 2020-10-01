@@ -1,38 +1,19 @@
-#include <err.h>
 #include "rendering.h"
 #include "SDL2/SDL_mixer.h"
 
+static void warnx(char *str)
+{
+    printf("WARNING : %s\n", str);
+}
+
+static void errx(char *str)
+{
+    printf("ERROR : %s\n", str);
+}
+
 void init_sdl(struct game *game)
 {
-    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
-        errx(2,"could not init SDL: %s", SDL_GetError());//get explicit err msg
-
-    //init window
-    SDL_Window *win = SDL_CreateWindow(GAME_NAME,
-            SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-            WIN_WIDTH, WIN_HEIGHT, 0);
-
-    if (!win)
-    {
-        warnx("could not init SDL window: %s", SDL_GetError());
-        SDL_Quit();
-        exit(3);
-    }
-
-    //init renderer
-    SDL_Renderer *renderer = SDL_CreateRenderer(win, -1,
-            SDL_RENDERER_PRESENTVSYNC);
-    if (!renderer)
-    {
-        warnx("could not init SDL renderer: %s", SDL_GetError());
-        SDL_DestroyWindow(win);
-        SDL_Quit();
-        exit(4);
-    }
-    game->renderer = renderer;
-    game->window = win;
-
-    Mix_Init(MIX_INIT_MP3);
+    return;
 }
 
 void destroy_sdl(struct game *game)
@@ -94,11 +75,6 @@ void destroy_sdl(struct game *game)
     SDL_DestroyTexture(game->texture_lib[GT]);
 
     SDL_DestroyTexture(game->texture_lib[R]);
-
-    SDL_DestroyRenderer(game->renderer);
-    SDL_DestroyWindow(game->window);
-    Mix_FreeMusic(game->music);
-    SDL_Quit();
 }
 
 void load_textures(struct game *game)

@@ -1,4 +1,5 @@
 #include "menu.h"
+#include "inputs.h"
 
 static void render_EML(struct game *game)
 {
@@ -124,21 +125,22 @@ int main_menu(struct game *game)
     int x;
     int y;
     Uint8 mouse_state = SDL_GetMouseState(&x, &y);
-    if (mouse_state & SDL_BUTTON_LMASK)
+    struct inputs in = get_inputs();
+    if (1 || mouse_state & SDL_BUTTON_LMASK)
     {
-        if (x > 300 && x < 500 && y < 326 && y > 276)
+        if (in.jump || (x > 300 && x < 500 && y < 326 && y > 276))
             return 1;
-        if (x > 300 && x < 500 && y > 356 && y < 406)
+        if (in.attack || (x > 300 && x < 500 && y > 356 && y < 406))
         {
             render_story(game);
             return 0;
         }
-        if (x > 300 && x < 500 && y > 516 && y < 566)
+        if (in.cheat || (x > 300 && x < 500 && y > 516 && y < 566))
         {
             render_credits(game);
             return 0;
         }
-        if (x > 720 && x < 770 && y > 560 && y < 610)
+        if (in.quit || (x > 720 && x < 770 && y > 560 && y < 610))
             return -1;
     }
 

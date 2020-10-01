@@ -1,6 +1,8 @@
 #include <SDL2/SDL.h>
 #include "inputs.h"
 #include "physics.h"
+#include <stdint.h>
+#include <switch.h>
 
 struct inputs get_inputs(void)
 {
@@ -9,18 +11,27 @@ struct inputs get_inputs(void)
         0, 0, 0, 0, 0, 0
     };
     SDL_PumpEvents();
-    const Uint8 *state = SDL_GetKeyboardState(NULL);
-    if (state[SDL_SCANCODE_RIGHT])
+    uint32_t kDown;
+    uint32_t kHeld;
+    uint32_t kUp;
+		hidScanInput();
+
+		kDown = hidKeysDown(CONTROLLER_P1_AUTO);
+		kHeld = hidKeysHeld(CONTROLLER_P1_AUTO);
+		kUp = hidKeysUp(CONTROLLER_P1_AUTO);
+
+//    const Uint8 *state = SDL_GetKeyboardState(NULL);
+    if (kHeld & KEY_RIGHT)
         in.right = 1;
-    if (state[SDL_SCANCODE_LEFT])
+    if (kHeld & KEY_LEFT)
         in.left = 1;
-    if (state[SDL_SCANCODE_SPACE])
+    if (kHeld & KEY_A)
         in.jump = 1;
-    if (state[SDL_SCANCODE_ESCAPE])
+    if (kHeld & KEY_PLUS)
         in.quit = 1;
-    if (state[SDL_SCANCODE_RCTRL])
+    if (kHeld & KEY_B)
         in.attack = 1;
-    if (state[SDL_SCANCODE_LCTRL])
+    if (kHeld & KEY_Y)
         in.cheat = -1;
     return in;
 }
